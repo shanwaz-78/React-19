@@ -1,3 +1,4 @@
+// eslint- disable-next-line;
 import React, { useEffect, useState } from "react";
 import { updateEmail } from "../../services/Api.js"; // Assuming you have this function in your API file
 
@@ -24,7 +25,7 @@ const Optimistic = () => {
         );
         if (!response.ok) throw new Error(`Failed to fetch users.`);
         const data = await response.json();
-        setUsers(data); // Set initial users data
+        setUsers(data);
         setOptimisticUsers(data); // Sync optimistic state
       } catch (err) {
         setError(err.message);
@@ -32,7 +33,7 @@ const Optimistic = () => {
     };
 
     fetchUsers();
-  }, []);
+  }, [optimisticUsers]);
 
   // Function to update user email
   const handleEmailUpdate = async (userId, newEmail) => {
